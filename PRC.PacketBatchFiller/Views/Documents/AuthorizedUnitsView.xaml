@@ -1,0 +1,118 @@
+﻿<catel:UserControl x:Class="PRC.PacketBatchFiller.Views.Documents.AuthorizedUnitsView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://catel.codeplex.com">
+
+    <catel:UserControl.Resources>
+        <catel:ViewModelToViewConverter x:Key="ViewModelToViewConverter" />
+    </catel:UserControl.Resources>
+
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0"
+                        Grid.Column="0"
+                        Orientation="Vertical">
+                <ContentControl Content="{Binding UnitSearchViewModel, Converter={StaticResource ViewModelToViewConverter}}" KeyboardNavigation.IsTabStop="False" />
+                
+
+            </StackPanel>
+            <Button Grid.Row="2" Grid.Column="0" Margin="5,0,5,0" Command="{Binding AddUnitCommand}" Content="Добавить &#x2192;" />
+            <Separator Grid.Row="0"
+                       Grid.RowSpan="3"
+                       Grid.Column="1"
+                       Margin="5,-5,5,-5"
+                       Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            
+            <TextBlock Grid.Row="0"
+                       Grid.Column="2"
+                       HorizontalAlignment="Left"
+                       Text="Уполномоченные лица:" />
+            <Separator Grid.Row="1"
+                       Grid.Column="2"
+                       Margin="-5,5,-5,5"
+                       Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            <ItemsControl Grid.Row="2"
+                          Grid.Column="2"
+                          ItemsSource="{Binding UnitViewModelsCollection}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Padding="0,3,0,0"
+                                       Text="&#x2014; " />
+                            <TextBlock Grid.Column="1"
+                                       Padding="0,3,0,0"
+                                       Text="{Binding UnitName}" />
+                            <Button Grid.Column="2"
+                                    Width="25"
+                                    Height="25"
+                                    Margin="5,0,0,0"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Command="{Binding OpenUnitEditWindowCommand}">
+                                <Image Width="19"
+                                       Height="19"
+                                       KeyboardNavigation.IsTabStop="False"
+                                       RenderOptions.BitmapScalingMode="Fant"
+                                       Source="/PRC.PacketBatchFiller;component/Resources/edit_file_25px.png"
+                                       Stretch="Fill" />
+                            </Button>
+
+
+                            <Button x:Name="RemoveEmailButton"
+                                    Grid.Column="3"
+                                    Width="25"
+                                    Height="25"
+                                    Margin="0,0,2,0"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    ToolTipService.InitialShowDelay="0">
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding RemoveUnitCommand}" Gesture="LeftDoubleClick" />
+                                </Button.InputBindings>
+                                <Button.ToolTip>
+                                    <ToolTip Placement="Top">
+                                        <TextBlock>Для удаления необходим двойной щелчёк!</TextBlock>
+                                    </ToolTip>
+                                </Button.ToolTip>
+
+
+                                <Image Width="13"
+                                       Height="13"
+                                       KeyboardNavigation.IsTabStop="False"
+                                       RenderOptions.BitmapScalingMode="Fant"
+                                       Source="/PRC.PacketBatchFiller;component/Resources/delete_sign_48px.png"
+                                       Stretch="Fill" />
+
+                            </Button>
+
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+
+    </StackPanel>
+
+</catel:UserControl>

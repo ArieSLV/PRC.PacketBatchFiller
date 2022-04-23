@@ -1,0 +1,35 @@
+﻿<catel:DataWindow x:Class="PRC.PacketBatchFiller.Views.LegalEntity.FormOfIncorporation.FormOfIncorporationEditWindow"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:catel="http://catel.codeplex.com"
+                  xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalAlignment="Right"
+                   Text="Полное написание:" />
+        <xctk:WatermarkTextBox Grid.Row="0"
+                               Grid.Column="1"
+                               Text="{Binding FullForm}"
+                               Watermark="Полное написание" />
+        <TextBlock Grid.Row="1"
+                   Grid.Column="0"
+                   HorizontalAlignment="Right"
+                   Text="Краткое написание:" />
+        <xctk:WatermarkTextBox Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding ShortForm}"
+                               Watermark="Краткое написание" />
+    </Grid>
+
+</catel:DataWindow>

@@ -1,0 +1,34 @@
+﻿<catel:DataWindow x:Class="PRC.PacketBatchFiller.Views.AddUnitWindow"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:catel="http://catel.codeplex.com">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0"
+                Width="200"
+                Height="200"
+                Margin="2,2,1,2"
+                Command="{Binding AddPersonCommand}">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock HorizontalAlignment="Center" Text="Добавить новое" />
+                <TextBlock HorizontalAlignment="Center" Text="Физическое лицо"  FontSize="20"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Column="1"
+                Width="200"
+                Height="200"
+                Margin="1,2,2,2"
+                Command="{Binding AddLegalEntityCommand}">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock HorizontalAlignment="Center" Text="Добавить новое" />
+                <TextBlock HorizontalAlignment="Center" Text="Юридическое лицо"  FontSize="20"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+
+
+</catel:DataWindow>

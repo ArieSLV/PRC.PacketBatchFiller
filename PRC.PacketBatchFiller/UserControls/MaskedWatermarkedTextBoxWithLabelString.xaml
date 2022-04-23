@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="PRC.PacketBatchFiller.UserControls.MaskedWatermarkedTextBoxWithLabelString"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:behavior="clr-namespace:PRC.PacketBatchFiller.Behavior"
+             xmlns:converters="clr-namespace:PRC.PacketBatchFiller.Converters"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:watermark="clr-namespace:PRC.PacketBatchFiller.Services.Watermark"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+
+    <StackPanel x:Name="LayoutRoot" Orientation="Horizontal">
+        <TextBlock x:Name="TextBlock"
+                   Text="{Binding LabelText, Converter={converters:AddColonToTheEndOfString}}"
+                   Visibility="{Binding Value,
+                                        Converter={converters:TextBlockValueToLabelVisibility}}" />
+        <AdornerDecorator>
+            <xctk:MaskedTextBox Name="MaskedTextBox"
+                                Width="{Binding LabelText,
+                                                Converter={converters:Add5PxToValue}}"
+                                AutoSelectBehavior="Never"
+                                KeyboardNavigation.TabIndex="{Binding KeyboardTabIndex}"
+                                Mask="{Binding Mask}"
+                                ValueDataType="{x:Type system:String}"
+                                Value="{Binding Value}">
+                <watermark:WatermarkService.Watermark>
+                    <TextBlock Name="WatermarkTextBlock"
+                               Foreground="Red"
+                               Text="{Binding LabelText}" />
+                </watermark:WatermarkService.Watermark>
+                <i:Interaction.Behaviors>
+                    <behavior:InputFromFirstCaretPosition />
+                    <behavior:DynamicMaskExpand CheckValue="{Binding CheckValue}" />
+                    <behavior:WatermarkedMaskedTextBoxWidthBehavior />
+                </i:Interaction.Behaviors>
+
+
+            </xctk:MaskedTextBox>
+        </AdornerDecorator>
+
+
+
+    </StackPanel>
+</UserControl>

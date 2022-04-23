@@ -1,0 +1,45 @@
+﻿<catel:DataWindow x:Class="PRC.PacketBatchFiller.Views.Documents.DocumentPackagesListWindow"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:catel="http://catel.codeplex.com"
+                  xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
+
+    <DockPanel LastChildFill="True">
+
+        <DockPanel DockPanel.Dock="Top" LastChildFill="True">
+
+            <Label Content="Фильтр" DockPanel.Dock="Left" />
+            <TextBox DockPanel.Dock="Right" />
+        </DockPanel>
+
+
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="True">
+            <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                <Button Command="{Binding CreateNewShareholderDocumentPackageCommand}">
+                    <Label Content="Создать пакет документов" />
+                </Button>
+                <Button Command="{Binding EditDocumentPackageCommand}">
+                    <Label Content="Редактировать пакет документов" />
+                </Button>
+                <Button Command="{Binding RemoveDocumentPackageFromDataContextCommand}">
+                    <Label Content="Удалить пакет документов" />
+                </Button>
+            </StackPanel>
+
+
+            <ListBox MinWidth="600"
+                     MaxHeight="700"
+                     DockPanel.Dock="Left"
+                     ItemsSource="{Binding DocumentPackageCollection}"
+                     SelectedItem="{Binding SelectedDocumentPackage}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <catel:EventToCommand Command="{Binding EditDocumentPackageCommand}" DisableAssociatedObjectOnCannotExecute="False" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+        </DockPanel>
+
+    </DockPanel>
+
+</catel:DataWindow>

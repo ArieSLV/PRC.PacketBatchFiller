@@ -1,0 +1,44 @@
+﻿<catel:DataWindow x:Class="PRC.PacketBatchFiller.Views.Person.CardIDIssuer.CardIDIssuerEditWindow"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:behavior="clr-namespace:PRC.PacketBatchFiller.Behavior"
+                  xmlns:catel="http://catel.codeplex.com"
+                  xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                  xmlns:system="clr-namespace:System;assembly=mscorlib"
+                  xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               HorizontalAlignment="Right"
+               Content="Наименование органа:" />
+        <TextBox Grid.Row="0"
+                 Grid.Column="1"
+                 Text="{Binding Name}" />
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               HorizontalAlignment="Right"
+               Content="Код подразделения:" />
+        <xctk:MaskedTextBox Name="CodeMaskedTextBox"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Mask="000-000"
+                            ValueDataType="{x:Type system:String}"
+                            Value="{Binding Code}">
+            <i:Interaction.Behaviors>
+                <behavior:FocusToNextControlOnMaskIsFull />
+            </i:Interaction.Behaviors>
+        </xctk:MaskedTextBox>
+    </Grid>
+
+
+</catel:DataWindow>

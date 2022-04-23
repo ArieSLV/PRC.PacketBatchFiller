@@ -1,0 +1,39 @@
+﻿<catel:Window x:Class="PRC.PacketBatchFiller.Views.MainWindow"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:catel="http://catel.codeplex.com"
+              ResizeMode="CanResize">
+
+    <Grid x:Name="LayoutRoot" Margin="6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0"
+                Command="{Binding OpenUnitListWindowCommand}"
+                Content="Клиенты" />
+        <Button Grid.Row="1"
+                Command="{Binding CreateNewPersonCommand}"
+                Content="Добавить физическое лицо" />
+        <Button Grid.Row="2"
+                Command="{Binding CreateNewLegalEntityCommand}"
+                Content="Добавить юридическое лицо" />
+
+        <Separator Grid.Row="3"
+                   Margin="0,5,0,5"
+                   Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+        <Button Grid.Row="4"
+                Command="{Binding OpenDocumentCreationWindowCommand}"
+                Content="Формирование документов" />
+
+
+
+    </Grid>
+
+</catel:Window>

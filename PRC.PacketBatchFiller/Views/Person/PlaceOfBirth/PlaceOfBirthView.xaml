@@ -1,0 +1,161 @@
+﻿<catel:UserControl x:Class="PRC.PacketBatchFiller.Views.Person.PlaceOfBirth.PlaceOfBirthView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://catel.codeplex.com"
+                   xmlns:converters="clr-namespace:PRC.PacketBatchFiller.Converters"
+                   xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                   xmlns:behavior="clr-namespace:PRC.PacketBatchFiller.Behavior"
+                   xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+
+    <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Vertical">
+
+
+
+            <TextBlock HorizontalAlignment="Right"
+                       KeyboardNavigation.IsTabStop="False"
+                       Text="Место рождения:"
+                       Visibility="{Binding SearchText,
+                                            Converter={converters:StringIsNullOrEmptyToCollapsed}}" />
+            <StackPanel HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+
+                <Button Width="31"
+                        Height="31"
+                        Command="{Binding AddItemToCollectionCommand}"
+                        KeyboardNavigation.IsTabStop="False"
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                        Visibility="{Binding SuggestListBoxAndControlButtonsVisibility}">
+                    <Image Width="25"
+                           Height="25"
+                           KeyboardNavigation.IsTabStop="False"
+                           RenderOptions.BitmapScalingMode="Fant"
+                           Source="/PRC.PacketBatchFiller;component/Resources/add_file_25px.png"
+                           Stretch="Fill">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+
+                    </Image>
+                </Button>
+                <Button Width="31"
+                        Height="31"
+                        Command="{Binding RemoveItemFromCollectionCommand}"
+                        KeyboardNavigation.IsTabStop="False"
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                        Visibility="{Binding SuggestListBoxAndControlButtonsVisibility}">
+                    <Image Width="25"
+                           Height="25"
+                           KeyboardNavigation.IsTabStop="False"
+                           RenderOptions.BitmapScalingMode="Fant"
+                           Source="/PRC.PacketBatchFiller;component/Resources/delete_file_25px.png"
+                           Stretch="Fill">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+                <Button Width="31"
+                        Height="31"
+                        Command="{Binding EditItemInCollectionCommand}"
+                        KeyboardNavigation.IsTabStop="False"
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                        Visibility="{Binding SuggestListBoxAndControlButtonsVisibility}">
+                    <Image Width="25"
+                           Height="25"
+                           KeyboardNavigation.IsTabStop="False"
+                           RenderOptions.BitmapScalingMode="Fant"
+                           Source="/PRC.PacketBatchFiller;component/Resources/edit_file_25px.png"
+                           Stretch="Fill">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+
+                    </Image>
+                </Button>
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel Margin="2,0,0,0" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Visibility="{Binding SelectedItemTextBlockVisibility}">
+                <TextBlock Name="PlaceOfBirthLabel"
+                           Margin="2,0,0,0"
+                           KeyboardNavigation.IsTabStop="False"
+                           Text="{Binding TargetEntity.Value}" />
+
+
+                <Button Width="18"
+                        Height="18"
+                        Margin="5,0,0,0"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Command="{Binding RemoveSelectedItemCommand}"
+                        KeyboardNavigation.IsTabStop="False"
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                        Visibility="{Binding RemoveSelectedButtonVisibility}">
+                    <Image Width="13"
+                           Height="13"
+                           KeyboardNavigation.IsTabStop="False"
+                           RenderOptions.BitmapScalingMode="Fant"
+                           Source="/PRC.PacketBatchFiller;component/Resources/delete_sign_48px.png"
+                           Stretch="Fill" />
+                </Button>
+            </StackPanel>
+
+            <xctk:WatermarkTextBox Name="SearchTextBox"
+                                   KeyboardNavigation.TabIndex="200"
+                                   Text="{Binding SearchText}"
+                                   Visibility="{Binding SearchTextBoxVisibility}"
+                                   Watermark="Место рождения">
+                <i:Interaction.Behaviors>
+                    <catel:UpdateBindingOnTextChanged UpdateDelay="500" />
+                    <catel:KeyPressToCommand Key="Enter" Command="{Binding SelectedItemToItemCommand}" />
+                    <behavior:MoveFocusToConcreteTextBoxAfterSuggestComplete />
+                </i:Interaction.Behaviors>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewKeyDown">
+                        <behavior:FocusTextBoxToListBoxOnKeyDown Key="Down" Target="{Binding ElementName=SuggestListBox}" />
+                    </i:EventTrigger>
+
+
+                </i:Interaction.Triggers>
+            </xctk:WatermarkTextBox>
+            <ListBox Name="SuggestListBox"
+                     MinWidth="100"
+                     MaxHeight="105"
+                     Margin="-2,0,2,8"
+                     BorderThickness="0"
+                     ItemsSource="{Binding ItemsCollection}"
+                     KeyboardNavigation.TabIndex="201"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"
+                     SelectedItem="{Binding SelectedItem}"
+                     Visibility="{Binding SuggestListBoxAndControlButtonsVisibility}">
+                <i:Interaction.Behaviors>
+                    <behavior:ListBoxItemTextToTextBox TextBox="{Binding ElementName=SearchTextBox}" />
+                    <behavior:FocusListBoxToTextBoxOnKeyDown TextBox="{Binding ElementName=SearchTextBox}" />
+                </i:Interaction.Behaviors>
+            </ListBox>
+        </StackPanel>
+    </StackPanel>
+    
+</catel:UserControl>

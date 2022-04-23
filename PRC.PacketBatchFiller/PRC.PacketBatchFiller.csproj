@@ -1,0 +1,1047 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9288A0E3-7C9E-4AA8-AE5A-841D426F247F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PRC.PacketBatchFiller</RootNamespace>
+    <AssemblyName>PRC.PacketBatchFiller</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>M:\distrib\PBF 3.0\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>16</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\output\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\output\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>2E55729A23EFCDC5C937E447BB1A762166707DBF</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>PRC.PacketBatchFiller_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aviad.WPF.Controls">
+      <HintPath>C:\Users\SkuditskiyLV\Desktop\ArticleSource\ACTB\bin\Debug\Aviad.WPF.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Catel.Core, Version=4.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Catel.Core.4.3.0\lib\net45\Catel.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Catel.Extensions.Controls, Version=4.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Catel.Extensions.Controls.4.3.0\lib\net45\Catel.Extensions.Controls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Catel.Extensions.EntityFramework6, Version=4.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Catel.Extensions.EntityFramework6.4.3.0\lib\net45\Catel.Extensions.EntityFramework6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Catel.Fody.Attributes, Version=2.10.0.0, Culture=neutral, PublicKeyToken=1c8163524cbe02e6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Catel.Fody.2.10.0\lib\portable-net4+sl4+wp7+win8+wpa81+MonoAndroid14+MonoTouch40\Catel.Fody.Attributes.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Catel.MVVM, Version=4.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Catel.MVVM.4.3.0\lib\net45\Catel.MVVM.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PhoneNumbers, Version=7.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\libphonenumber-csharp.7.0.11\lib\PhoneNumbers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.4\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Catel.MVVM.4.3.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Behavior\ComboBoxAutoWidthBehavior.cs" />
+    <Compile Include="Behavior\DynamicMaskExpand.cs" />
+    <Compile Include="Behavior\FocusListBoxToTextBoxOnKeyDown.cs" />
+    <Compile Include="Behavior\FocusToNextControlOnMaskIsFull.cs" />
+    <Compile Include="Behavior\HideAndMakeDefaultViewOfTextBlock.cs" />
+    <Compile Include="Behavior\HideListBoxIfEmpty.cs" />
+    <Compile Include="Behavior\InputFromFirstCaretPosition.cs" />
+    <Compile Include="Behavior\LegalEntityNameFormationBehavior.cs" />
+    <Compile Include="Behavior\ListBoxItemTextToTextBox.cs" />
+    <Compile Include="Behavior\FocusTextBoxToListBoxOnKeyDown.cs" />
+    <Compile Include="Behavior\MoveFocusToConcreteTextBoxAfterSuggestComplete.cs" />
+    <Compile Include="Behavior\NullBindingIfMaskNotFull.cs" />
+    <Compile Include="Behavior\PhoneAsYouTypeFormatterBehavior.cs" />
+    <Compile Include="Behavior\GotFocusOnVisibleMaskedTextBoxWithTextBlock.cs" />
+    <Compile Include="Behavior\SetDefaultSystemColor.cs" />
+    <Compile Include="Behavior\TabOnEnterOrTabBehavior.cs" />
+    <Compile Include="Behavior\WatermarkedMaskedTextBoxWidthBehavior.cs" />
+    <Compile Include="Converters\Add5pxToValue.cs" />
+    <Compile Include="Converters\AddColonToTheEndOfString.cs" />
+    <Compile Include="Converters\AuthorizedUnitsToString.cs" />
+    <Compile Include="Converters\CardIDIssuerObjectToString.cs" />
+    <Compile Include="Converters\CheckBoxCheckedToVisibilityCollapse.cs" />
+    <Compile Include="Converters\CheckBoxCheckedToVisibilityVisible.cs" />
+    <Compile Include="Converters\DividentsPaymentWayToIsSelectedConverter.cs" />
+    <Compile Include="Converters\Documents\NotificationReceivingMethodToIsSelectedConverter.cs" />
+    <Compile Include="Converters\ListBoxItemsToVisibilityCollapse.cs" />
+    <Compile Include="Converters\ConvertorBase.cs" />
+    <Compile Include="Converters\ListBoxItemsToVisibilityVisible.cs" />
+    <Compile Include="Converters\NullOrDefaultToVisibilityCollapse.cs" />
+    <Compile Include="Converters\ContactTypeToIsSelectedConverter.cs" />
+    <Compile Include="Converters\ContactTypeToImage.cs" />
+    <Compile Include="Converters\Documents\ShareholderDocumentEntity\ShareholderQuestionaryEntity\QuestionnaireSubmittingReasonToIsSelectedConverter.cs" />
+    <Compile Include="Converters\SecuritiesTypeToIsSelectedConverter.cs" />
+    <Compile Include="Converters\SecuritiesTypeToString.cs" />
+    <Compile Include="Converters\ShareholderAccountTypeToIsSelectedConverter.cs" />
+    <Compile Include="Converters\StringEmptyToRowHeight.cs" />
+    <Compile Include="Converters\StringEmptyToVisibility.cs" />
+    <Compile Include="Converters\ListBoxItemsToRowHeight.cs" />
+    <Compile Include="Converters\SharholderAccountTypeEnumToStringConverter.cs" />
+    <Compile Include="Converters\StringIsNullOrEmptyToCollapsed.cs" />
+    <Compile Include="Converters\StringToBrackets.cs" />
+    <Compile Include="Converters\TextBlockValueToLabelVisibility.cs" />
+    <Compile Include="DataAccess\Clients\SuggestClient.cs" />
+    <Compile Include="DataAccess\GroupFilter.cs" />
+    <Compile Include="DataAccess\Models\SuggestModels.cs" />
+    <Compile Include="Extensions\MyExtensions.cs" />
+    <Compile Include="Extensions\StringValue.cs" />
+    <Compile Include="Migrations\201512081216010_One.cs" />
+    <Compile Include="Migrations\201512081216010_One.Designer.cs">
+      <DependentUpon>201512081216010_One.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601120637150_Two.cs" />
+    <Compile Include="Migrations\201601120637150_Two.Designer.cs">
+      <DependentUpon>201601120637150_Two.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601251016382_Three.cs" />
+    <Compile Include="Migrations\201601251016382_Three.Designer.cs">
+      <DependentUpon>201601251016382_Three.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602110838222_Four.cs" />
+    <Compile Include="Migrations\201602110838222_Four.Designer.cs">
+      <DependentUpon>201602110838222_Four.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602110906317_Five.cs" />
+    <Compile Include="Migrations\201602110906317_Five.Designer.cs">
+      <DependentUpon>201602110906317_Five.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602120321039_Six.cs" />
+    <Compile Include="Migrations\201602120321039_Six.Designer.cs">
+      <DependentUpon>201602120321039_Six.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602121035360_Seven.cs" />
+    <Compile Include="Migrations\201602121035360_Seven.Designer.cs">
+      <DependentUpon>201602121035360_Seven.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602151149290_Eight.cs" />
+    <Compile Include="Migrations\201602151149290_Eight.Designer.cs">
+      <DependentUpon>201602151149290_Eight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602170558244_Nine.cs" />
+    <Compile Include="Migrations\201602170558244_Nine.Designer.cs">
+      <DependentUpon>201602170558244_Nine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602171229215_Ten.cs" />
+    <Compile Include="Migrations\201602171229215_Ten.Designer.cs">
+      <DependentUpon>201602171229215_Ten.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602190841585_Eleven.cs" />
+    <Compile Include="Migrations\201602190841585_Eleven.Designer.cs">
+      <DependentUpon>201602190841585_Eleven.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602190901295_Twelve.cs" />
+    <Compile Include="Migrations\201602190901295_Twelve.Designer.cs">
+      <DependentUpon>201602190901295_Twelve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602201043525_Thirteen.cs" />
+    <Compile Include="Migrations\201602201043525_Thirteen.Designer.cs">
+      <DependentUpon>201602201043525_Thirteen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602201109280_Fourteen.cs" />
+    <Compile Include="Migrations\201602201109280_Fourteen.Designer.cs">
+      <DependentUpon>201602201109280_Fourteen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602260734013_Fiveteen.cs" />
+    <Compile Include="Migrations\201602260734013_Fiveteen.Designer.cs">
+      <DependentUpon>201602260734013_Fiveteen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602290710146_Sixteen.cs" />
+    <Compile Include="Migrations\201602290710146_Sixteen.Designer.cs">
+      <DependentUpon>201602290710146_Sixteen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602291017407_Seventeen.cs" />
+    <Compile Include="Migrations\201602291017407_Seventeen.Designer.cs">
+      <DependentUpon>201602291017407_Seventeen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603090547161_Eighteen.cs" />
+    <Compile Include="Migrations\201603090547161_Eighteen.Designer.cs">
+      <DependentUpon>201603090547161_Eighteen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603090625398_Nineteen.cs" />
+    <Compile Include="Migrations\201603090625398_Nineteen.Designer.cs">
+      <DependentUpon>201603090625398_Nineteen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603090628094_Twenty.cs" />
+    <Compile Include="Migrations\201603090628094_Twenty.Designer.cs">
+      <DependentUpon>201603090628094_Twenty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603091152160_TwentyOne.cs" />
+    <Compile Include="Migrations\201603091152160_TwentyOne.Designer.cs">
+      <DependentUpon>201603091152160_TwentyOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603151244305_TwentyTwo.cs" />
+    <Compile Include="Migrations\201603151244305_TwentyTwo.Designer.cs">
+      <DependentUpon>201603151244305_TwentyTwo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603151252148_TwentyThree.cs" />
+    <Compile Include="Migrations\201603151252148_TwentyThree.Designer.cs">
+      <DependentUpon>201603151252148_TwentyThree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603240806047_TwentyFour.cs" />
+    <Compile Include="Migrations\201603240806047_TwentyFour.Designer.cs">
+      <DependentUpon>201603240806047_TwentyFour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603250543313_TwentyFive.cs" />
+    <Compile Include="Migrations\201603250543313_TwentyFive.Designer.cs">
+      <DependentUpon>201603250543313_TwentyFive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603280419513_TwentySix.cs" />
+    <Compile Include="Migrations\201603280419513_TwentySix.Designer.cs">
+      <DependentUpon>201603280419513_TwentySix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603281235039_TwentySeven.cs" />
+    <Compile Include="Migrations\201603281235039_TwentySeven.Designer.cs">
+      <DependentUpon>201603281235039_TwentySeven.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603290619033_TwentyEight.cs" />
+    <Compile Include="Migrations\201603290619033_TwentyEight.Designer.cs">
+      <DependentUpon>201603290619033_TwentyEight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603290753196_TwentyNine.cs" />
+    <Compile Include="Migrations\201603290753196_TwentyNine.Designer.cs">
+      <DependentUpon>201603290753196_TwentyNine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603291050030_Thirty.cs" />
+    <Compile Include="Migrations\201603291050030_Thirty.Designer.cs">
+      <DependentUpon>201603291050030_Thirty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603291118383_ThirtyOne.cs" />
+    <Compile Include="Migrations\201603291118383_ThirtyOne.Designer.cs">
+      <DependentUpon>201603291118383_ThirtyOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603300614077_ThirtyTwo.cs" />
+    <Compile Include="Migrations\201603300614077_ThirtyTwo.Designer.cs">
+      <DependentUpon>201603300614077_ThirtyTwo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603300655219_ThirtyThree.cs" />
+    <Compile Include="Migrations\201603300655219_ThirtyThree.Designer.cs">
+      <DependentUpon>201603300655219_ThirtyThree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603301124286_ThirtyFour.cs" />
+    <Compile Include="Migrations\201603301124286_ThirtyFour.Designer.cs">
+      <DependentUpon>201603301124286_ThirtyFour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604051228433_ThirtyFive.cs" />
+    <Compile Include="Migrations\201604051228433_ThirtyFive.Designer.cs">
+      <DependentUpon>201604051228433_ThirtyFive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604270754174_ThirtySix.cs" />
+    <Compile Include="Migrations\201604270754174_ThirtySix.Designer.cs">
+      <DependentUpon>201604270754174_ThirtySix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604271234157_ThirtySeven.cs" />
+    <Compile Include="Migrations\201604271234157_ThirtySeven.Designer.cs">
+      <DependentUpon>201604271234157_ThirtySeven.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605111108214_ThirtyEight.cs" />
+    <Compile Include="Migrations\201605111108214_ThirtyEight.Designer.cs">
+      <DependentUpon>201605111108214_ThirtyEight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605111111441_ThirtyNine.cs" />
+    <Compile Include="Migrations\201605111111441_ThirtyNine.Designer.cs">
+      <DependentUpon>201605111111441_ThirtyNine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605111132297_Forty.cs" />
+    <Compile Include="Migrations\201605111132297_Forty.Designer.cs">
+      <DependentUpon>201605111132297_Forty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605111231101_FortyOne.cs" />
+    <Compile Include="Migrations\201605111231101_FortyOne.Designer.cs">
+      <DependentUpon>201605111231101_FortyOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605111235423_FortyTwo.cs" />
+    <Compile Include="Migrations\201605111235423_FortyTwo.Designer.cs">
+      <DependentUpon>201605111235423_FortyTwo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605120501042_FortyThree.cs" />
+    <Compile Include="Migrations\201605120501042_FortyThree.Designer.cs">
+      <DependentUpon>201605120501042_FortyThree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BaseClasses\Document.cs" />
+    <Compile Include="Models\BaseClasses\Documents\AuthorizesDocument.cs" />
+    <Compile Include="Models\BaseClasses\Documents\AuthorizesDocumentType.cs" />
+    <Compile Include="Models\BaseClasses\Documents\DocumentPackage.cs" />
+    <Compile Include="Models\BaseClasses\NotificationReceivingMethod.cs" />
+    <Compile Include="Models\Documents\ShareholderDocuments\ShareholderAuthorizesDocument.cs" />
+    <Compile Include="Models\Documents\ShareholderDocuments\ShareholderQuestionary.cs" />
+    <Compile Include="Models\Documents\ShareholderDocuments\ShareholderDocumentPackage.cs" />
+    <Compile Include="Models\Documents\ShareholderDocuments\ShareholderTransferOrder.cs" />
+    <Compile Include="Models\Documents\TransferReasonDocument.cs" />
+    <Compile Include="Models\Documents\TransferReasonType.cs" />
+    <Compile Include="Models\LegalEntityEntity\IssueOfSecurities.cs" />
+    <Compile Include="Models\LegalEntityEntity\LegalEntity.cs" />
+    <Compile Include="Models\LegalEntityEntity\FormOfIncorporation.cs" />
+    <Compile Include="Models\LegalEntityEntity\RegistrationCertificate.cs" />
+    <Compile Include="Models\LegalEntityEntity\RegistrationCertificateIssuer.cs" />
+    <Compile Include="Models\PersonsEntity\CardIDType.cs" />
+    <Compile Include="Models\BaseClasses\ShareholderAccount.cs" />
+    <Compile Include="Models\BaseClasses\UnitsEntity\ContactType.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Services\DocumentService.cs" />
+    <Compile Include="Services\Interfaces\IDocumentService.cs" />
+    <Compile Include="Services\Interfaces\IUnitService.cs" />
+    <Compile Include="Services\UnitService.cs" />
+    <Compile Include="Services\Watermark\WatermarkAdorner.cs" />
+    <Compile Include="Services\Watermark\WatermarkService.cs" />
+    <Compile Include="UserControls\MaskedWatermarkedTextBoxWithLabelDate.xaml.cs">
+      <DependentUpon>MaskedWatermarkedTextBoxWithLabelDate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MaskedWatermarkedTextBoxWithLabelString.xaml.cs">
+      <DependentUpon>MaskedWatermarkedTextBoxWithLabelString.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\BaseClasses\UnitAsItemForViewModelCollection.cs" />
+    <Compile Include="ViewModels\Documents\ShareholderDocumentEntity\ShareholderAuthorizesDocumentEntity\ShareholderAuthorizesDocumentEditWindowModel.cs" />
+    <Compile Include="ViewModels\Documents\ShareholderDocumentEntity\ShareholderAuthorizesDocumentEntity\ShareholderAuthorizesDocumentViewModel.cs" />
+    <Compile Include="ViewModels\Documents\DocumentPackagesListWindowModel.cs" />
+    <Compile Include="ViewModels\Documents\ShareholderDocumentEntity\ShareholderDocumentsListViewModel.cs" />
+    <Compile Include="ViewModels\Documents\ShareholderDocumentEntity\ShareholderTransferOrderEntity\CreditingAccountSearchViewModel.cs" />
+    <Compile Include="ViewModels\Documents\ShareholderDocumentEntity\ShareholderTransferOrderEntity\DebitingAccountSearchViewModel.cs" />
+    <Compile Include="ViewModels\Documents\ShareholderDocumentEntity\ShareholderTransferOrderEntity\IssueOfSecuritiesChooseViewModel.cs" />
+    <Compile Include="ViewModels\Documents\ShareholderDocumentEntity\ShareholderTransferOrderEntity\ShareholderTransferOrderEditWindowModel.cs" />
+    <Compile Include="ViewModels\Documents\ShareholderDocumentEntity\ShareholderTransferOrderEntity\ShareholderTransferOrderViewModel.cs" />
+    <Compile Include="ViewModels\Documents\ShareholderDocumentEntity\ShareholderTransferOrderEntity\TransferReasonDocumentsViewModel.cs" />
+    <Compile Include="ViewModels\Documents\ShareholderDocumentEntity\ShareholderTransferOrderEntity\TransferReasonDocumentViewModel.cs" />
+    <Compile Include="ViewModels\Documents\TransferReasonTypeEditWindowModel.cs" />
+    <Compile Include="ViewModels\Documents\TransferReasonTypeSearchViewModel.cs" />
+    <Compile Include="ViewModels\IssueOfSecuritiesViewModel.cs" />
+    <Compile Include="ViewModels\LegalEntityEntity\ForItemCollectionLegalEntityViewModel.cs" />
+    <Compile Include="ViewModels\PersonEntity\ForItemCollectionPersonViewModel.cs" />
+    <Compile Include="ViewModels\Documents\ShareholderDocumentEntity\ShareholderAuthorizesDocumentEntity\AuthorizedUnitsViewModel.cs" />
+    <Compile Include="ViewModels\BaseClasses\DocumentViewModelBase.cs" />
+    <Compile Include="ViewModels\Documents\ShareholderDocumentEntity\ShareholderQuestionaryEntity\ShareholderQuestionaryEditWindowModel.cs" />
+    <Compile Include="ViewModels\Documents\ShareholderDocumentEntity\ShareholderQuestionaryEntity\ShareholderQuestionaryViewModel.cs" />
+    <Compile Include="ViewModels\Documents\ShareholderDocumentEntity\ShareholderAccountSearchViewModel.cs" />
+    <Compile Include="ViewModels\Documents\ShareholderDocumentEntity\ShareholderDocumentPackageWindowModel.cs" />
+    <Compile Include="ViewModels\LegalEntityEntity\FirstPersonOfCompanyViewModel.cs" />
+    <Compile Include="ViewModels\LegalEntityEntity\IssuesOfSecurities\IssueOfSecuritiesViewModel.cs" />
+    <Compile Include="ViewModels\LegalEntityEntity\IssuesOfSecurities\IssuesOfSecuritiesViewModel.cs" />
+    <Compile Include="ViewModels\UnitEntity\AddressRegistrationViewModel.cs" />
+    <Compile Include="ViewModels\AddUnitWindowModel.cs" />
+    <Compile Include="ViewModels\AuthorizesDocumentsViewModel.cs" />
+    <Compile Include="ViewModels\Documents\AuthorizesDocumentTypeEditWindowModel.cs" />
+    <Compile Include="ViewModels\Documents\AuthorizesDocumentTypeViewModel.cs" />
+    <Compile Include="ViewModels\AuthorizesDocumentWindowModel.cs" />
+    <Compile Include="ViewModels\BankDetailsViewModel.cs" />
+    <Compile Include="ViewModels\BaseClasses\AddressViewModelBase.cs" />
+    <Compile Include="ViewModels\BaseClasses\SuggestFromLocalDataViewModelBase.cs" />
+    <Compile Include="ViewModels\PersonEntity\CardIDIssuer\CardIDIssuerEditWindowModel.cs" />
+    <Compile Include="ViewModels\PersonEntity\CardIDIssuer\CardIDIssuerSearchViewModel.cs" />
+    <Compile Include="ViewModels\CardIDViewModel.cs" />
+    <Compile Include="ViewModels\UnitEntity\CitizenshipEntity\CitizenshipEditWindowModel.cs" />
+    <Compile Include="ViewModels\UnitEntity\CitizenshipEntity\CitizenshipViewModel.cs" />
+    <Compile Include="ViewModels\UnitEntity\Emails\EmailsViewModel.cs" />
+    <Compile Include="ViewModels\UnitEntity\Emails\EmailViewModel.cs" />
+    <Compile Include="ViewModels\LegalEntityEntity\FormOfIncorporationEntity\FormOfIncorporationEditWindowModel.cs" />
+    <Compile Include="ViewModels\LegalEntityEntity\FormOfIncorporationEntity\FormOfIncorporationViewModel.cs" />
+    <Compile Include="ViewModels\Suggest\PersonSearchViewModel.cs" />
+    <Compile Include="ViewModels\RegistrationCertificateViewModel.cs" />
+    <Compile Include="ViewModels\LegalEntityEntity\LegalEntityWindowModel.cs" />
+    <Compile Include="ViewModels\UnitEntity\PhoneNumbers\PhoneNumbersViewModel.cs" />
+    <Compile Include="ViewModels\UnitEntity\PhoneNumbers\PhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\PersonEntity\PlaceOfBirth\PlaceOfBirthEditWindowViewModel.cs" />
+    <Compile Include="ViewModels\PersonEntity\PlaceOfBirth\PlaceOfBirthViewModel.cs" />
+    <Compile Include="ViewModels\LegalEntityEntity\RegistrationCertificateIssuer\RegistrationCertificateIssuerEditWindowModel.cs" />
+    <Compile Include="ViewModels\LegalEntityEntity\RegistrationCertificateIssuer\RegistrationCertificateIssuerViewModel.cs" />
+    <Compile Include="ViewModels\Suggest\SecuritiesIssuerSearchViewModel.cs" />
+    <Compile Include="ViewModels\UnitEntity\ShareholderAccounts\ShareholderAccountsViewModel.cs" />
+    <Compile Include="ViewModels\UnitEntity\ShareholderAccounts\ShareholderAccountViewModel.cs" />
+    <Compile Include="ViewModels\BaseClasses\UnitSearchViewModel.cs" />
+    <Compile Include="ViewModels\UnitEntity\UnitSearchViewModel.cs" />
+    <Compile Include="Views\AddUnitWindow.xaml.cs">
+      <DependentUpon>AddUnitWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AuthorizesDocumentTypeEditWindow.xaml.cs">
+      <DependentUpon>AuthorizesDocumentTypeEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BankDetailsView.xaml.cs">
+      <DependentUpon>BankDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CardIDView.xaml.cs">
+      <DependentUpon>CardIDView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Documents\AuthorizedUnitsView.xaml.cs">
+      <DependentUpon>AuthorizedUnitsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Documents\AuthorizesDocumentTypeView.xaml.cs">
+      <DependentUpon>AuthorizesDocumentTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Documents\CreditingAccountSearchView.xaml.cs">
+      <DependentUpon>CreditingAccountSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Documents\DebitingAccountSearchView.xaml.cs">
+      <DependentUpon>DebitingAccountSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Documents\DocumentPackagesListWindow.xaml.cs">
+      <DependentUpon>DocumentPackagesListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Documents\ShareholderDocument\ShareholderAccountSearchView.xaml.cs">
+      <DependentUpon>ShareholderAccountSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Documents\ShareholderDocument\ShareholderAuthorizesDocumentEditWindow.xaml.cs">
+      <DependentUpon>ShareholderAuthorizesDocumentEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Documents\ShareholderDocument\ShareholderDocumentPackageWindow.xaml.cs">
+      <DependentUpon>ShareholderDocumentPackageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Documents\ShareholderDocument\ShareholderDocumentsListView.xaml.cs">
+      <DependentUpon>ShareholderDocumentsListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Documents\ShareholderDocument\ShareholderQuestionaryEditWindow.xaml.cs">
+      <DependentUpon>ShareholderQuestionaryEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Documents\ShareholderDocument\ShareholderTransferOrderEditWindow.xaml.cs">
+      <DependentUpon>ShareholderTransferOrderEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Documents\ShareholderDocument\TransferReasonDocumentsView.xaml.cs">
+      <DependentUpon>TransferReasonDocumentsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Documents\TransferReasonTypeSearchView.xaml.cs">
+      <DependentUpon>TransferReasonTypeSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IssueOfSecuritiesChooseView.xaml.cs">
+      <DependentUpon>IssueOfSecuritiesChooseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LegalEntityWindow.xaml.cs">
+      <DependentUpon>LegalEntityWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LegalEntity\FirstPersonOfCompanyView.xaml.cs">
+      <DependentUpon>FirstPersonOfCompanyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LegalEntity\FormOfIncorporation\FormOfIncorporationEditWindow.xaml.cs">
+      <DependentUpon>FormOfIncorporationEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LegalEntity\FormOfIncorporation\FormOfIncorporationView.xaml.cs">
+      <DependentUpon>FormOfIncorporationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LegalEntity\IssuesOfSecuritiesView.xaml.cs">
+      <DependentUpon>IssuesOfSecuritiesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LegalEntity\RegistrationCertificateIssuer\RegistrationCertificateIssuerEditWindow.xaml.cs">
+      <DependentUpon>RegistrationCertificateIssuerEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LegalEntity\RegistrationCertificateIssuer\RegistrationCertificateIssuerView.xaml.cs">
+      <DependentUpon>RegistrationCertificateIssuerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Person\CardIDIssuer\CardIDIssuerEditWindow.xaml.cs">
+      <DependentUpon>CardIDIssuerEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Person\CardIDIssuer\CardIDIssuerSearchView.xaml.cs">
+      <DependentUpon>CardIDIssuerSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Person\PlaceOfBirth\PlaceOfBirthEditWindow.xaml.cs">
+      <DependentUpon>PlaceOfBirthEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Person\PlaceOfBirth\PlaceOfBirthView.xaml.cs">
+      <DependentUpon>PlaceOfBirthView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Suggest\PersonSearchView.xaml.cs">
+      <DependentUpon>PersonSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Suggest\SecuritiesIssuerSearchView.xaml.cs">
+      <DependentUpon>SecuritiesIssuerSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransferReasonTypeEditWindow.xaml.cs">
+      <DependentUpon>TransferReasonTypeEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Unit\AddressRegistrationView.xaml.cs">
+      <DependentUpon>AddressRegistrationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Unit\Citizenship\CitizenshipEditWindow.xaml.cs">
+      <DependentUpon>CitizenshipEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Unit\Citizenship\CitizenshipView.xaml.cs">
+      <DependentUpon>CitizenshipView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Unit\EmailsView.xaml.cs">
+      <DependentUpon>EmailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Unit\MailingAddressView.xaml.cs">
+      <DependentUpon>MailingAddressView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Unit\PhoneNumbersView.xaml.cs">
+      <DependentUpon>PhoneNumbersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Unit\ShareholderAccountsView.xaml.cs">
+      <DependentUpon>ShareholderAccountsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Unit\UnitSearchView.xaml.cs">
+      <DependentUpon>UnitSearchView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Themes\Theme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\MaskedWatermarkedTextBoxWithLabelDate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\MaskedWatermarkedTextBoxWithLabelString.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddUnitWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AuthorizesDocumentTypeEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BankDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CardIDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Documents\AuthorizedUnitsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Documents\AuthorizesDocumentTypeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Documents\CreditingAccountSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Documents\DebitingAccountSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Documents\DocumentPackagesListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Documents\ShareholderDocument\ShareholderAccountSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Documents\ShareholderDocument\ShareholderAuthorizesDocumentEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Documents\ShareholderDocument\ShareholderDocumentPackageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Documents\ShareholderDocument\ShareholderDocumentsListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Documents\ShareholderDocument\ShareholderQuestionaryEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Documents\ShareholderDocument\ShareholderTransferOrderEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Documents\ShareholderDocument\TransferReasonDocumentsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Documents\TransferReasonTypeSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\IssueOfSecuritiesChooseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LegalEntityWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LegalEntity\FirstPersonOfCompanyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LegalEntity\FormOfIncorporation\FormOfIncorporationEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LegalEntity\FormOfIncorporation\FormOfIncorporationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LegalEntity\IssuesOfSecuritiesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LegalEntity\RegistrationCertificateIssuer\RegistrationCertificateIssuerEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LegalEntity\RegistrationCertificateIssuer\RegistrationCertificateIssuerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersonWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Person\CardIDIssuer\CardIDIssuerEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Person\CardIDIssuer\CardIDIssuerSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Person\PlaceOfBirth\PlaceOfBirthEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Person\PlaceOfBirth\PlaceOfBirthView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegistrationCertificateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Suggest\PersonSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Suggest\SecuritiesIssuerSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TransferReasonTypeEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UnitListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\PersonsEntity\Person.cs" />
+    <Compile Include="Models\PersonsEntity\CardID.cs" />
+    <Compile Include="Models\PersonsEntity\CardIDIssuer.cs" />
+    <Compile Include="Models\PersonsEntity\PlaceOfBirth.cs" />
+    <Compile Include="Models\BaseClasses\UnitsEntity\BankDetails.cs" />
+    <Compile Include="Models\BaseClasses\UnitsEntity\Address.cs" />
+    <Compile Include="Models\BaseClasses\UnitsEntity\Citizenship.cs" />
+    <Compile Include="Models\BaseClasses\UnitsEntity\Email.cs" />
+    <Compile Include="Models\BaseClasses\UnitsEntity\PhoneNumber.cs" />
+    <Compile Include="Models\BaseClasses\UnitsEntity\Unit.cs" />
+    <Compile Include="DataAccess\PBFContext.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ViewModels\UnitEntity\MailingAddressViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\PersonEntity\PersonWindowModel.cs" />
+    <Compile Include="ViewModels\UnitListViewModel.cs" />
+    <Compile Include="Views\PersonWindow.xaml.cs">
+      <DependentUpon>PersonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegistrationCertificateView.xaml.cs">
+      <DependentUpon>RegistrationCertificateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UnitListWindow.xaml.cs">
+      <DependentUpon>UnitListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\Unit\AddressRegistrationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Unit\Citizenship\CitizenshipEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Unit\Citizenship\CitizenshipView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Unit\EmailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Unit\MailingAddressView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Unit\PhoneNumbersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Unit\ShareholderAccountsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Unit\UnitSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Migrations\201512081216010_One.resx">
+      <DependentUpon>201512081216010_One.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601120637150_Two.resx">
+      <DependentUpon>201601120637150_Two.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601251016382_Three.resx">
+      <DependentUpon>201601251016382_Three.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602110838222_Four.resx">
+      <DependentUpon>201602110838222_Four.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602110906317_Five.resx">
+      <DependentUpon>201602110906317_Five.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602120321039_Six.resx">
+      <DependentUpon>201602120321039_Six.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602121035360_Seven.resx">
+      <DependentUpon>201602121035360_Seven.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602151149290_Eight.resx">
+      <DependentUpon>201602151149290_Eight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602170558244_Nine.resx">
+      <DependentUpon>201602170558244_Nine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602171229215_Ten.resx">
+      <DependentUpon>201602171229215_Ten.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602190841585_Eleven.resx">
+      <DependentUpon>201602190841585_Eleven.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602190901295_Twelve.resx">
+      <DependentUpon>201602190901295_Twelve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602201043525_Thirteen.resx">
+      <DependentUpon>201602201043525_Thirteen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602201109280_Fourteen.resx">
+      <DependentUpon>201602201109280_Fourteen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602260734013_Fiveteen.resx">
+      <DependentUpon>201602260734013_Fiveteen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602290710146_Sixteen.resx">
+      <DependentUpon>201602290710146_Sixteen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602291017407_Seventeen.resx">
+      <DependentUpon>201602291017407_Seventeen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603090547161_Eighteen.resx">
+      <DependentUpon>201603090547161_Eighteen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603090625398_Nineteen.resx">
+      <DependentUpon>201603090625398_Nineteen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603090628094_Twenty.resx">
+      <DependentUpon>201603090628094_Twenty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603091152160_TwentyOne.resx">
+      <DependentUpon>201603091152160_TwentyOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603151244305_TwentyTwo.resx">
+      <DependentUpon>201603151244305_TwentyTwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603151252148_TwentyThree.resx">
+      <DependentUpon>201603151252148_TwentyThree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603240806047_TwentyFour.resx">
+      <DependentUpon>201603240806047_TwentyFour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603250543313_TwentyFive.resx">
+      <DependentUpon>201603250543313_TwentyFive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603280419513_TwentySix.resx">
+      <DependentUpon>201603280419513_TwentySix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603281235039_TwentySeven.resx">
+      <DependentUpon>201603281235039_TwentySeven.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603290619033_TwentyEight.resx">
+      <DependentUpon>201603290619033_TwentyEight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603290753196_TwentyNine.resx">
+      <DependentUpon>201603290753196_TwentyNine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603291050030_Thirty.resx">
+      <DependentUpon>201603291050030_Thirty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603291118383_ThirtyOne.resx">
+      <DependentUpon>201603291118383_ThirtyOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603300614077_ThirtyTwo.resx">
+      <DependentUpon>201603300614077_ThirtyTwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603300655219_ThirtyThree.resx">
+      <DependentUpon>201603300655219_ThirtyThree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603301124286_ThirtyFour.resx">
+      <DependentUpon>201603301124286_ThirtyFour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604051228433_ThirtyFive.resx">
+      <DependentUpon>201604051228433_ThirtyFive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604270754174_ThirtySix.resx">
+      <DependentUpon>201604270754174_ThirtySix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604271234157_ThirtySeven.resx">
+      <DependentUpon>201604271234157_ThirtySeven.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605111108214_ThirtyEight.resx">
+      <DependentUpon>201605111108214_ThirtyEight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605111111441_ThirtyNine.resx">
+      <DependentUpon>201605111111441_ThirtyNine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605111132297_Forty.resx">
+      <DependentUpon>201605111132297_Forty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605111231101_FortyOne.resx">
+      <DependentUpon>201605111231101_FortyOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605111235423_FortyTwo.resx">
+      <DependentUpon>201605111235423_FortyTwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605120501042_FortyThree.resx">
+      <DependentUpon>201605120501042_FortyThree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PRC.PacketBatchFiller_TemporaryKey.pfx" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\delete_sign_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pencil_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\add_file_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\edit_file_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\delete_file_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cell_phone_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\factory_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\fax_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\home_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\question_mark_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\copy_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\paste_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,48 @@
+﻿<catel:DataWindow x:Class="PRC.PacketBatchFiller.Views.UnitListWindow"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:catel="http://catel.codeplex.com"
+                  xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                  ResizeMode="CanResize">
+
+    <DockPanel LastChildFill="True">
+
+        <DockPanel DockPanel.Dock="Top" LastChildFill="True">
+
+            <Label Content="Фильтр" DockPanel.Dock="Left" />
+            <TextBox DockPanel.Dock="Right" />
+        </DockPanel>
+
+
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="True">
+            <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                <Button Command="{Binding CreateNewPersonCommand}">
+                    <Label Content="Добавить физическое лицо" />
+                </Button>
+                <Button Command="{Binding EditUnitCommand}">
+                    <Label Content="Редактировать лицо..." />
+                </Button>
+                <Button Command="{Binding RemoveUnitCommand}">
+                    <Label Content="Удалить лицо..." />
+                </Button>
+            </StackPanel>
+
+
+            <ListBox MinWidth="600"
+                     MaxHeight="700"
+                     DockPanel.Dock="Left"
+                     ItemsSource="{Binding UnitsCollection}"
+                     SelectedItem="{Binding SelectedUnit}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <catel:EventToCommand Command="{Binding EditUnitCommand}" DisableAssociatedObjectOnCannotExecute="False" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+
+            </ListBox>
+        </DockPanel>
+
+    </DockPanel>
+
+</catel:DataWindow>

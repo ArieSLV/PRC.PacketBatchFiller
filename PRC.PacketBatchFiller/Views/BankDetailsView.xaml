@@ -1,0 +1,175 @@
+﻿<catel:UserControl x:Class="PRC.PacketBatchFiller.Views.BankDetailsView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:behavior="clr-namespace:PRC.PacketBatchFiller.Behavior"
+                   xmlns:catel="http://catel.codeplex.com"
+                   xmlns:converters="clr-namespace:PRC.PacketBatchFiller.Converters"
+                   xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
+
+    <DockPanel KeyboardNavigation.IsTabStop="False" LastChildFill="True">
+
+        <catel:StackGrid DockPanel.Dock="Top" KeyboardNavigation.IsTabStop="False">
+            <catel:StackGrid.ColumnDefinitions>
+                <ColumnDefinition Width="144" />
+                <ColumnDefinition Width="*" />
+            </catel:StackGrid.ColumnDefinitions>
+            <catel:StackGrid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="{Binding ElementName=SuggestListBox, Path=Items.Count, Converter={converters:ListBoxItemsToVisibilityCollapse}}" />
+                <RowDefinition Height="Auto" />
+            </catel:StackGrid.RowDefinitions>
+
+
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Content="Строка поиска"
+                   KeyboardNavigation.IsTabStop="False" />
+            <TextBox Name="SearchTextBox"
+                     Grid.Row="0"
+                     Grid.Column="1"
+                     IsTabStop="True"
+                     KeyboardNavigation.TabIndex="900"
+                     Text="{Binding SearchText}">
+                <i:Interaction.Behaviors>
+                    <catel:UpdateBindingOnTextChanged UpdateDelay="500" />
+                    <catel:KeyPressToCommand Key="Enter"
+                                             Command="{Binding SelectedItemToItemCommand}"
+                                             CommandParameter="{Binding ElementName=SearchTextBox}" />
+                </i:Interaction.Behaviors>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewKeyDown">
+                        <behavior:FocusTextBoxToListBoxOnKeyDown Key="Down" Target="{Binding ElementName=SuggestListBox}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Height="1"
+                   KeyboardNavigation.IsTabStop="False" />
+            <ListBox Name="SuggestListBox"
+                     Grid.Row="1"
+                     Grid.Column="1"
+                     Margin="2,-4,2,0"
+                     ItemsSource="{Binding SuggestCollection}"
+                     KeyboardNavigation.TabIndex="901"
+                     Visibility="{Binding ElementName=SuggestListBox,
+                                          Path=Items.Count,
+                                          Converter={converters:ListBoxItemsToVisibilityCollapse}}">
+                <i:Interaction.Behaviors>
+                    <behavior:ListBoxItemTextToTextBox TextBox="{Binding ElementName=SearchTextBox}" />
+                    <behavior:FocusListBoxToTextBoxOnKeyDown TextBox="{Binding ElementName=SearchTextBox}" />
+                </i:Interaction.Behaviors>
+            </ListBox>
+
+        </catel:StackGrid>
+
+        <catel:StackGrid>
+            <catel:StackGrid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </catel:StackGrid.RowDefinitions>
+            <catel:StackGrid.ColumnDefinitions>
+                <ColumnDefinition Width="144" />
+                <ColumnDefinition Width="1*" MinWidth="150" />
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="1*" MinWidth="150" />
+            </catel:StackGrid.ColumnDefinitions>
+
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalAlignment="Right"
+                   Content="Лицевой счет лица"
+                   KeyboardNavigation.IsTabStop="False" />
+
+            <TextBox Grid.Row="0"
+                     Grid.Column="1"
+                     Grid.ColumnSpan="3"
+                     KeyboardNavigation.TabIndex="902"
+                     Text="{Binding PersonalAccount}" />
+
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   HorizontalAlignment="Right"
+                   Content="Наименоваие отделения"
+                   FontSize="11"
+                   KeyboardNavigation.IsTabStop="False" />
+            <TextBox Grid.Row="1"
+                     Grid.Column="1"
+                     Grid.ColumnSpan="3"
+                     KeyboardNavigation.TabIndex="903"
+                     Text="{Binding BankBranchName}" />
+
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   HorizontalAlignment="Right"
+                   Content="Счет получателя платежа"
+                   FontSize="11"
+                   KeyboardNavigation.IsTabStop="False" />
+            <TextBox Grid.Row="2"
+                     Grid.Column="1"
+                     KeyboardNavigation.TabIndex="904"
+                     Text="{Binding MainAccount}" />
+
+            <Label Grid.Row="2"
+                   Grid.Column="2"
+                   HorizontalAlignment="Right"
+                   Content="Корр. счет"
+                   KeyboardNavigation.IsTabStop="False" />
+            <TextBox Grid.Row="2"
+                     Grid.Column="3"
+                     KeyboardNavigation.TabIndex="905"
+                     Text="{Binding CorrAccount}" />
+
+            <Label Grid.Row="3"
+                   Grid.Column="0"
+                   HorizontalAlignment="Right"
+                   Content="Наименование банка"
+                   KeyboardNavigation.IsTabStop="False" />
+            <TextBox Grid.Row="3"
+                     Grid.Column="1"
+                     Grid.ColumnSpan="3"
+                     KeyboardNavigation.TabIndex="906"
+                     Text="{Binding BankName}" />
+
+            <Label Grid.Row="4"
+                   Grid.Column="0"
+                   HorizontalAlignment="Right"
+                   Content="ИНН банка"
+                   KeyboardNavigation.IsTabStop="False" />
+            <TextBox Grid.Row="4"
+                     Grid.Column="1"
+                     KeyboardNavigation.TabIndex="907"
+                     Text="{Binding BankINN}" />
+
+            <Label Grid.Row="4"
+                   Grid.Column="2"
+                   HorizontalAlignment="Right"
+                   Content="БИК"
+                   KeyboardNavigation.IsTabStop="False" />
+            <TextBox Grid.Row="4"
+                     Grid.Column="3"
+                     KeyboardNavigation.TabIndex="908"
+                     Text="{Binding BIK}" />
+
+            <Label Grid.Row="5"
+                   Grid.Column="0"
+                   HorizontalAlignment="Right"
+                   Content="Город банка"
+                   KeyboardNavigation.IsTabStop="False" />
+            <TextBox Grid.Row="5"
+                     Grid.Column="1"
+                     Grid.ColumnSpan="3"
+                     KeyboardNavigation.TabIndex="909"
+                     Text="{Binding BankCity}" />
+
+        </catel:StackGrid>
+
+    </DockPanel>
+
+</catel:UserControl>

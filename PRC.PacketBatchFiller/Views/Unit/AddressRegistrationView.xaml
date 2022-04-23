@@ -1,0 +1,226 @@
+﻿<catel:UserControl x:Class="PRC.PacketBatchFiller.Views.Unit.AddressRegistrationView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:behavior="clr-namespace:PRC.PacketBatchFiller.Behavior"
+                   xmlns:catel="http://catel.codeplex.com"
+                   xmlns:converters="clr-namespace:PRC.PacketBatchFiller.Converters"
+                   xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
+
+    <Expander Header="{Binding ExpanderHeaderText}"
+              IsExpanded="{Binding IsExpanded}"
+              KeyboardNavigation.IsTabStop="False">
+
+
+        <DockPanel KeyboardNavigation.IsTabStop="False" LastChildFill="True">
+
+            <catel:StackGrid DockPanel.Dock="Top" KeyboardNavigation.IsTabStop="False">
+                <catel:StackGrid.ColumnDefinitions>
+                    <ColumnDefinition Width="144" />
+                    <ColumnDefinition Width="*" />
+                </catel:StackGrid.ColumnDefinitions>
+                <catel:StackGrid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="{Binding ElementName=SuggestListBox, Path=Items.Count, Converter={converters:ListBoxItemsToVisibilityCollapse}}" />
+                    <RowDefinition Height="Auto" />
+                </catel:StackGrid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       HorizontalAlignment="Right"
+                       Content="Строка поиска:"
+                       KeyboardNavigation.IsTabStop="False" />
+                <TextBox Name="SearchTextBox"
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         IsTabStop="True"
+                         KeyboardNavigation.TabIndex="500"
+                         Text="{Binding SearchText}">
+                    <i:Interaction.Behaviors>
+                        <catel:UpdateBindingOnTextChanged UpdateDelay="500" />
+                        <catel:Focus FocusMoment="PropertyChanged"
+                                     PropertyName="GetFocusOnSearchMaskedTextBoxServiceProperty"
+                                     Source="{Binding }" />
+                        <catel:KeyPressToCommand Key="Enter"
+                                                 Command="{Binding SelectedItemToItemCommand}"
+                                                 CommandParameter="{Binding ElementName=SearchTextBox}" />
+
+                    </i:Interaction.Behaviors>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PreviewKeyDown">
+                            <behavior:FocusTextBoxToListBoxOnKeyDown Key="Down" Target="{Binding ElementName=SuggestListBox}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+
+                <Label Grid.Row="1"
+                       Grid.Column="0"
+                       Height="1"
+                       KeyboardNavigation.IsTabStop="False" />
+                <ListBox Name="SuggestListBox"
+                         Grid.Row="1"
+                         Grid.Column="1"
+                         Margin="2,-4,2,0"
+                         ItemsSource="{Binding SuggestCollection}"
+                         KeyboardNavigation.TabIndex="501"
+                         Visibility="{Binding ElementName=SuggestListBox,
+                                              Path=Items.Count,
+                                              Converter={converters:ListBoxItemsToVisibilityCollapse}}">
+                    <i:Interaction.Behaviors>
+                        <behavior:ListBoxItemTextToTextBox TextBox="{Binding ElementName=SearchTextBox}" />
+                        <behavior:FocusListBoxToTextBoxOnKeyDown TextBox="{Binding ElementName=SearchTextBox}" />
+                    </i:Interaction.Behaviors>
+                </ListBox>
+
+                <Label Grid.Row="2"
+                       Grid.Column="0"
+                       HorizontalAlignment="Right"
+                       Content="Индекс"
+                       KeyboardNavigation.IsTabStop="False" />
+
+                <TextBox Grid.Row="2"
+                         Grid.Column="1"
+                         KeyboardNavigation.TabIndex="502"
+                         Text="{Binding Index}" />
+            </catel:StackGrid>
+            <catel:StackGrid DockPanel.Dock="Bottom" KeyboardNavigation.IsTabStop="False">
+                <catel:StackGrid.ColumnDefinitions>
+                    <ColumnDefinition Width="144" />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </catel:StackGrid.ColumnDefinitions>
+
+                <Label Grid.Column="0" KeyboardNavigation.IsTabStop="False" />
+                <TextBox Grid.Column="1"
+                         KeyboardNavigation.TabIndex="513"
+                         Text="{Binding BuildingType}" />
+                <TextBox Grid.Column="2"
+                         KeyboardNavigation.TabIndex="514"
+                         Text="{Binding BuildingValue}" />
+                <TextBox Grid.Column="3"
+                         KeyboardNavigation.TabIndex="515"
+                         Text="{Binding SubBuildingType}" />
+                <TextBox Grid.Column="4"
+                         KeyboardNavigation.TabIndex="516"
+                         Text="{Binding SubBuildingValue}" />
+                <TextBox Grid.Column="5"
+                         KeyboardNavigation.TabIndex="517"
+                         Text="{Binding FlatType}" />
+                <TextBox Grid.Column="6"
+                         KeyboardNavigation.TabIndex="518"
+                         Text="{Binding FlatValue}" />
+
+            </catel:StackGrid>
+            <catel:StackGrid>
+                <catel:StackGrid.RowDefinitions>
+                    <RowDefinition Height="{Binding RegionName, Converter={converters:StringEmptyToRowHeight}}" />
+                    <RowDefinition Height="{Binding DistrictName, Converter={converters:StringEmptyToRowHeight}}" />
+                    <RowDefinition Height="{Binding CityName, Converter={converters:StringEmptyToRowHeight}}" />
+                    <RowDefinition Height="{Binding LocalityName, Converter={converters:StringEmptyToRowHeight}}" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </catel:StackGrid.RowDefinitions>
+                <catel:StackGrid.ColumnDefinitions>
+                    <ColumnDefinition Width="144" />
+                    <ColumnDefinition Width="Auto" MinWidth="50" />
+                    <ColumnDefinition Width="*" MinWidth="300" />
+                </catel:StackGrid.ColumnDefinitions>
+
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       HorizontalAlignment="Right"
+                       Content="Область, край"
+                       KeyboardNavigation.IsTabStop="False" />
+                <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         KeyboardNavigation.TabIndex="503"
+                         Text="{Binding RegionType}"
+                         Visibility="{Binding RegionName,
+                                              Converter={converters:StringEmptyToVisibility}}" />
+                <TextBox Grid.Row="0"
+                         Grid.Column="2"
+                         KeyboardNavigation.TabIndex="504"
+                         Text="{Binding RegionName}"
+                         Visibility="{Binding RegionName,
+                                              Converter={converters:StringEmptyToVisibility}}" />
+
+                <Label Grid.Row="1"
+                       Grid.Column="0"
+                       HorizontalAlignment="Right"
+                       Content="Район"
+                       KeyboardNavigation.IsTabStop="False" />
+                <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         KeyboardNavigation.TabIndex="505"
+                         Text="{Binding DistrictType}"
+                         Visibility="{Binding DistrictName,
+                                              Converter={converters:StringEmptyToVisibility}}" />
+                <TextBox Grid.Row="1"
+                         Grid.Column="2"
+                         KeyboardNavigation.TabIndex="506"
+                         Text="{Binding DistrictName}"
+                         Visibility="{Binding DistrictName,
+                                              Converter={converters:StringEmptyToVisibility}}" />
+
+                <Label Grid.Row="2"
+                       Grid.Column="0"
+                       HorizontalAlignment="Right"
+                       Content="Город"
+                       KeyboardNavigation.IsTabStop="False" />
+                <TextBox Grid.Row="2"
+                         Grid.Column="1"
+                         KeyboardNavigation.TabIndex="507"
+                         Text="{Binding CityType}"
+                         Visibility="{Binding CityName,
+                                              Converter={converters:StringEmptyToVisibility}}" />
+                <TextBox Grid.Row="2"
+                         Grid.Column="2"
+                         KeyboardNavigation.TabIndex="508"
+                         Text="{Binding CityName}"
+                         Visibility="{Binding CityName,
+                                              Converter={converters:StringEmptyToVisibility}}" />
+
+                <Label Grid.Row="3"
+                       Grid.Column="0"
+                       HorizontalAlignment="Right"
+                       Content="Иной населенный пункт"
+                       KeyboardNavigation.IsTabStop="False" />
+                <TextBox Grid.Row="3"
+                         Grid.Column="1"
+                         KeyboardNavigation.TabIndex="509"
+                         Text="{Binding LocalityType}"
+                         Visibility="{Binding LocalityName,
+                                              Converter={converters:StringEmptyToVisibility}}" />
+                <TextBox Grid.Row="3"
+                         Grid.Column="2"
+                         KeyboardNavigation.TabIndex="510"
+                         Text="{Binding LocalityName}"
+                         Visibility="{Binding LocalityName,
+                                              Converter={converters:StringEmptyToVisibility}}" />
+
+                <Label Grid.Row="4"
+                       Grid.Column="0"
+                       HorizontalAlignment="Right"
+                       Content="Улица"
+                       KeyboardNavigation.IsTabStop="False" />
+                <TextBox Name="StreetTypeTextBox"
+                         Grid.Row="4"
+                         Grid.Column="1"
+                         KeyboardNavigation.TabIndex="511"
+                         Text="{Binding StreetType}" />
+                <TextBox Grid.Row="4"
+                         Grid.Column="2"
+                         KeyboardNavigation.TabIndex="512"
+                         Text="{Binding StreetName}" />
+
+            </catel:StackGrid>
+
+        </DockPanel>
+
+    </Expander>
+
+</catel:UserControl>

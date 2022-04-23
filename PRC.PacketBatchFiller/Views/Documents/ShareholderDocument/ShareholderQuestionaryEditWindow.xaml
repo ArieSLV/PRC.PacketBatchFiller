@@ -1,0 +1,59 @@
+﻿<catel:DataWindow x:Class="PRC.PacketBatchFiller.Views.Documents.ShareholderDocument.ShareholderQuestionaryEditWindow"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:baseClasses="clr-namespace:PRC.PacketBatchFiller.Models.BaseClasses"
+                  xmlns:catel="http://catel.codeplex.com"
+                  xmlns:converters="clr-namespace:PRC.PacketBatchFiller.Converters.Documents.ShareholderDocumentEntity.ShareholderQuestionaryEntity"
+                  xmlns:converters1="clr-namespace:PRC.PacketBatchFiller.Converters"
+                  xmlns:convertersForDocuments="clr-namespace:PRC.PacketBatchFiller.Converters.Documents"
+                  xmlns:models="clr-namespace:PRC.PacketBatchFiller.Models.Documents.ShareholderDocuments"
+                  xmlns:modelsOfDocuments="clr-namespace:PRC.PacketBatchFiller.Models.Documents">
+    <catel:DataWindow.Resources>
+        <catel:ViewModelToViewConverter x:Key="ViewModelToViewConverter" />
+    </catel:DataWindow.Resources>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Основание для предоставления анкеты:" />
+            <RadioButton x:Name="OpenRadioButton"
+                         Margin="10,0,10,0"
+                         Content="Открытие счета"
+                         IsChecked="{Binding SubmittingReason,
+                                             Converter={converters:QuestionnaireSubmittingReasonToIsSelectedConverter},
+                                             ConverterParameter={x:Static models:QuestionnaireSubmittingReason.Open}}" />
+            <RadioButton Content="Внесение изменений" IsChecked="{Binding SubmittingReason, Converter={converters:QuestionnaireSubmittingReasonToIsSelectedConverter}, ConverterParameter={x:Static models:QuestionnaireSubmittingReason.Edit}}" />
+        </StackPanel>
+        <StackPanel Visibility="{Binding ElementName=OpenRadioButton, Path=IsChecked, Converter={catel:BooleanToCollapsingVisibilityConverter}}">
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            <CheckBox Content="Требуется уведомление об открытии лицевого счета" IsChecked="{Binding NotificationRequiredFlag}" />
+            <StackPanel Visibility="{Binding NotificationRequiredFlag, Converter={catel:BooleanToCollapsingVisibilityConverter}}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Способ получения уведомления:" />
+                    <RadioButton Margin="10,0,10,0"
+                                 Content="Лично"
+                                 IsChecked="{Binding NotificationReceivingMethod,
+                                                     Converter={convertersForDocuments:NotificationReceivingMethodToIsSelectedConverter},
+                                                     ConverterParameter={x:Static baseClasses:NotificationReceivingMethod.Personally}}" />
+                    <RadioButton x:Name="ByMailReceiveMethodRadioButton"
+                                 Content="Заказным письмом"
+                                 IsChecked="{Binding NotificationReceivingMethod,
+                                                     Converter={convertersForDocuments:NotificationReceivingMethodToIsSelectedConverter},
+                                                     ConverterParameter={x:Static baseClasses:NotificationReceivingMethod.ByMail}}" />
+                </StackPanel>
+                <StackPanel Visibility="{Binding ElementName=ByMailReceiveMethodRadioButton, Path=IsChecked, Converter={catel:BooleanToCollapsingVisibilityConverter}}">
+                    <CheckBox x:Name="AddressForNotificationAsMailingAddress"
+                              Content="Направить уведомление по почтовому адресу, указанному в анкете"
+                              IsChecked="{Binding AddressForNotificationAsMailingAddressFlag}" />
+                    <ContentControl Content="{Binding MailingAddressViewModel,
+                                                      Converter={StaticResource ViewModelToViewConverter}}"
+                                    KeyboardNavigation.IsTabStop="False"
+                                    Visibility="{Binding ElementName=AddressForNotificationAsMailingAddress,
+                                                         Path=IsChecked,
+                                                         Converter={converters1:CheckBoxCheckedToVisibilityCollapse}}" />
+                </StackPanel>
+            </StackPanel>
+
+        </StackPanel>
+
+    </StackPanel>
+
+</catel:DataWindow>

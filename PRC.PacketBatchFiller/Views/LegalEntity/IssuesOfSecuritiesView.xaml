@@ -1,0 +1,163 @@
+﻿<catel:UserControl x:Class="PRC.PacketBatchFiller.Views.LegalEntity.IssuesOfSecuritiesView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:Models="clr-namespace:PRC.PacketBatchFiller.Models"
+                   xmlns:catel="http://catel.codeplex.com"
+                   xmlns:converters="clr-namespace:PRC.PacketBatchFiller.Converters"
+                   xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                   xmlns:issuesOfSecurities="clr-namespace:PRC.PacketBatchFiller.ViewModels.LegalEntityEntity.IssuesOfSecurities"
+                   xmlns:legalEntityEntity="clr-namespace:PRC.PacketBatchFiller.Models.LegalEntityEntity"
+                   xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Margin="2,0,2,0"
+                   HorizontalAlignment="Right"
+                   Padding="0,3,0,0"
+                   Text="Выпуски ЦБ:" />
+
+        <Separator Grid.Row="0"
+                   Grid.RowSpan="3"
+                   Grid.Column="1"
+                   Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+        <ItemsControl Grid.Row="0"
+                      Grid.Column="2"
+                      ItemsSource="{Binding IssuesOfSecuritiesViewModelCollection}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type issuesOfSecurities:IssueOfSecuritiesViewModel}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+
+                        <TextBlock Grid.Column="0"
+                                   Padding="0,3,0,0"
+                                   Text="{Binding Type,
+                                                  Converter={converters:SecuritiesTypeToString}}" />
+                        <TextBlock Grid.Column="1"
+                                   Padding="0,3,0,0"
+                                   Text=": " />
+                        <TextBlock Grid.Column="2"
+                                   Padding="0,3,0,0"
+                                   Text="{Binding Number}" />
+                       
+
+
+                        <Button x:Name="RemoveEmailButton"
+                                Grid.Column="3"
+                                Width="25"
+                                Height="25"
+                                Margin="0,0,2,0"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                ToolTipService.InitialShowDelay="0">
+                            <Button.InputBindings>
+                                <MouseBinding Command="{Binding RemoveIssueOfSecuritiesCommand}" Gesture="LeftDoubleClick" />
+                            </Button.InputBindings>
+                            <Button.ToolTip>
+                                <ToolTip Placement="Top">
+                                    <TextBlock>Для удаления необходим двойной щелчёк!</TextBlock>
+                                </ToolTip>
+                            </Button.ToolTip>
+
+
+                            <Image Width="13"
+                                   Height="13"
+                                   KeyboardNavigation.IsTabStop="False"
+                                   RenderOptions.BitmapScalingMode="Fant"
+                                   Source="/PRC.PacketBatchFiller;component/Resources/delete_sign_48px.png"
+                                   Stretch="Fill" />
+
+                        </Button>
+
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Separator Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+        <TextBlock Grid.Row="2"
+                   Grid.Column="0"
+                   Height="22"
+                   HorizontalAlignment="Right"
+                   Padding="0,3,2,0"
+                   Text="Добавить:" />
+
+        <StackPanel Grid.Row="2"
+                    Grid.Column="2"
+                    Orientation="Horizontal">
+
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Height="25"
+                             Content="АО"
+                             GroupName="SecuritiesTypesGroup"
+                             IsChecked="{Binding AddedIssueOfSecuritiesType,
+                                                 Converter={converters:SecuritiesTypeToIsSelectedConverter},
+                                                 ConverterParameter={x:Static legalEntityEntity:SecuritiesTypes.SimpleShare}}"
+                             KeyboardNavigation.IsTabStop="False"
+                             Style="{StaticResource {x:Type ToggleButton}}" />
+
+                <RadioButton Height="25"
+                             Margin="2,0,2,0"
+                             Content="АП, типа А"
+                             GroupName="SecuritiesTypesGroup"
+                             IsChecked="{Binding AddedIssueOfSecuritiesType,
+                                                 Converter={converters:SecuritiesTypeToIsSelectedConverter},
+                                                 ConverterParameter={x:Static legalEntityEntity:SecuritiesTypes.PreferredTypaAShare}}"
+                             KeyboardNavigation.IsTabStop="False"
+                             Style="{StaticResource {x:Type ToggleButton}}" />
+
+                <RadioButton Height="25"
+                             Content="АП"
+                             GroupName="SecuritiesTypesGroup"
+                             IsChecked="{Binding AddedIssueOfSecuritiesType,
+                                                 Converter={converters:SecuritiesTypeToIsSelectedConverter},
+                                                 ConverterParameter={x:Static legalEntityEntity:SecuritiesTypes.PreferredShare}}"
+                             KeyboardNavigation.IsTabStop="False"
+                             Style="{StaticResource {x:Type ToggleButton}}" />
+            </StackPanel>
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+            <xctk:WatermarkTextBox MinWidth="105"
+                                   VerticalContentAlignment="Center"
+                                   KeyboardNavigation.TabIndex="1150"
+                                   Padding="2,-1,0,0"
+                                   Text="{Binding AddedNumber}"
+                                   Watermark="Номер">
+                <i:Interaction.Behaviors>
+                    <catel:UpdateBindingOnTextChanged UpdateDelay="0" />
+                    <catel:KeyPressToCommand Key="Enter" Command="{Binding AddIssueOfSecuritiesCommand}" />
+                </i:Interaction.Behaviors>
+            </xctk:WatermarkTextBox>
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+        </StackPanel>
+    </Grid>
+
+
+</catel:UserControl>

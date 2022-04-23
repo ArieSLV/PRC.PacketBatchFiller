@@ -1,0 +1,48 @@
+﻿<catel:DataWindow x:Class="PRC.PacketBatchFiller.Views.Documents.ShareholderDocument.ShareholderTransferOrderEditWindow"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:catel="http://catel.codeplex.com"
+                  xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+                  xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                  xmlns:behavior="clr-namespace:PRC.PacketBatchFiller.Behavior"
+                  xmlns:converters="clr-namespace:PRC.PacketBatchFiller.Converters">
+
+    <catel:DataWindow.Resources>
+        <catel:ViewModelToViewConverter x:Key="ViewModelToViewConverter" />
+    </catel:DataWindow.Resources>
+
+    <StackPanel Margin="5,0,5,0">
+        <StackPanel Orientation="Horizontal">
+        <TextBlock Text="Количество передаваемых ЦБ:" Visibility="{Binding QuantityOfTransferedSecurities, Converter={converters:StringEmptyToVisibility}}" />
+        <xctk:WatermarkTextBox KeyboardNavigation.TabIndex="100"
+                                               Text="{Binding QuantityOfTransferedSecurities}"
+                                               Watermark="Количество передаваемых ЦБ">
+
+
+            <i:Interaction.Behaviors>
+                <catel:UpdateBindingOnTextChanged UpdateDelay="10" />
+                <behavior:TabOnEnterOrTabBehavior />
+            </i:Interaction.Behaviors>
+        </xctk:WatermarkTextBox>
+            <TextBlock Text="шт." Visibility="{Binding QuantityOfTransferedSecurities, Converter={converters:StringEmptyToVisibility}}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Сумма сделки:" Visibility="{Binding AmountOfTransaction, Converter={converters:StringEmptyToVisibility}}" />
+            <xctk:WatermarkTextBox KeyboardNavigation.TabIndex="101"
+                                               Text="{Binding AmountOfTransaction}"
+                                               Watermark="Сумма сделки">
+
+
+                <i:Interaction.Behaviors>
+                    <catel:UpdateBindingOnTextChanged UpdateDelay="10" />
+                    <behavior:TabOnEnterOrTabBehavior />
+                </i:Interaction.Behaviors>
+            </xctk:WatermarkTextBox>
+            
+        </StackPanel>
+        <ContentControl Content="{Binding TransferReasonDocumentsViewModel, Converter={StaticResource ViewModelToViewConverter}}" />
+        <ContentControl Content="{Binding DebitingAccountSearchViewModel, Converter={StaticResource ViewModelToViewConverter}}" />
+        <ContentControl Content="{Binding CreditingAccountSearchViewModel, Converter={StaticResource ViewModelToViewConverter}}" />
+    </StackPanel>
+
+</catel:DataWindow>

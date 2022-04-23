@@ -1,0 +1,15 @@
+﻿<catel:DataWindow x:Class="PRC.PacketBatchFiller.Views.Documents.ShareholderDocument.ShareholderDocumentPackageWindow"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:catel="http://catel.codeplex.com">
+    <catel:DataWindow.Resources>
+        <catel:ViewModelToViewConverter x:Key="ViewModelToViewConverter" />
+    </catel:DataWindow.Resources>
+
+    <StackPanel>
+        <ContentControl Content="{Binding ShareholderAccountSearchViewModel, Converter={StaticResource ViewModelToViewConverter}}" />
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+        <ContentControl Content="{Binding ShareholderDocumentsListViewModel, Converter={StaticResource ViewModelToViewConverter}}" />
+    </StackPanel>
+
+</catel:DataWindow>

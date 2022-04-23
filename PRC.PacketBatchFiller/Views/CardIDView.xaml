@@ -1,0 +1,58 @@
+﻿<catel:UserControl x:Class="PRC.PacketBatchFiller.Views.CardIDView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:behavior="clr-namespace:PRC.PacketBatchFiller.Behavior"
+                   xmlns:catel="http://catel.codeplex.com"
+                   xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                   xmlns:userControls="clr-namespace:PRC.PacketBatchFiller.UserControls">
+
+    <catel:UserControl.Resources>
+        <catel:ViewModelToViewConverter x:Key="ViewModelToViewConverter" />
+    </catel:UserControl.Resources>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+
+            <ComboBox Width="161"
+                      Margin="0,-2,0,0"
+                      BorderThickness="1"
+                      ItemsSource="{Binding CardIDTypeCollection}"
+                      KeyboardNavigation.TabIndex="300"
+                      SelectedItem="{Binding CardIDType}"
+                      Style="{StaticResource ComboboxStyle}">
+                <i:Interaction.Behaviors>
+                    <behavior:ComboBoxAutoWidthBehavior />
+                </i:Interaction.Behaviors>
+            </ComboBox>
+
+            <StackPanel Margin="0,2,0,0" Orientation="Horizontal">
+                <Separator Margin="5,0,5,0" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <userControls:MaskedWatermarkedTextBoxWithLabelString CheckValue="{Binding CardIDType.Value}"
+                                                                      KeyboardTabIndex="301"
+                                                                      LabelText="Серия"
+                                                                      Mask="{Binding SeriesMask}"
+                                                                      Value="{Binding Series}" />
+
+                <Separator Margin="5,0,5,0" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+                <userControls:MaskedWatermarkedTextBoxWithLabelString CheckValue="{Binding CardIDType.Value}"
+                                                                      KeyboardTabIndex="303"
+                                                                      LabelText="Номер"
+                                                                      Mask="{Binding NumberMask}"
+                                                                      Value="{Binding Number}" />
+
+                <Separator Margin="5,0,5,0" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+                <userControls:MaskedWatermarkedTextBoxWithLabelDate KeyboardTabIndex="305"
+                                                                    LabelText="Дата выдачи"
+                                                                    Value="{Binding IssueDate}" />
+            </StackPanel>
+        </StackPanel>
+        <ContentControl Content="{Binding CardIDIssuerSearchViewModel,
+                                          Converter={StaticResource ViewModelToViewConverter}}"
+                        KeyboardNavigation.IsTabStop="False"
+                        KeyboardNavigation.TabIndex="499" />
+    </StackPanel>
+
+
+
+</catel:UserControl>

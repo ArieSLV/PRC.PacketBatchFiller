@@ -1,0 +1,248 @@
+﻿<catel:DataWindow
+    x:Class="PRC.PacketBatchFiller.Views.PersonWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Models="clr-namespace:PRC.PacketBatchFiller.Models"
+    xmlns:behavior="clr-namespace:PRC.PacketBatchFiller.Behavior"
+    xmlns:catel="http://catel.codeplex.com"
+    xmlns:converters="clr-namespace:PRC.PacketBatchFiller.Converters"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:unitsEntity="clr-namespace:PRC.PacketBatchFiller.Models.BaseClasses.UnitsEntity"
+    xmlns:userControls="clr-namespace:PRC.PacketBatchFiller.UserControls"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    ResizeMode="CanResize">
+
+    <catel:DataWindow.Resources>
+        <catel:ViewModelToViewConverter x:Key="ViewModelToViewConverter" />
+    </catel:DataWindow.Resources>
+
+    <StackPanel KeyboardNavigation.IsTabStop="False" Orientation="Vertical">
+        <StackPanel Margin="5,0,0,0" Orientation="Horizontal">
+            <ToggleButton
+                Width="100"
+                Margin="7,0,2,0"
+                VerticalAlignment="Top"
+                Content="Роль: Акционер"
+                IsChecked="{Binding RoleIsShareHolderFlag}"
+                Style="{StaticResource {x:Type ToggleButton}}" />
+
+
+            <Separator Margin="5,-5,5,-5" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            <ContentControl
+                Content="{Binding ShareholderAccountsViewModel, Converter={StaticResource ViewModelToViewConverter}}"
+                KeyboardNavigation.IsTabStop="False"
+                Visibility="{Binding RoleIsShareHolderFlag, Converter={catel:BooleanToCollapsingVisibilityConverter}}" />
+
+        </StackPanel>
+        <Separator Margin="0,5,0,0" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+        <Expander
+            Header="Паспортные данные"
+            IsExpanded="True"
+            KeyboardNavigation.IsTabStop="False">
+            <StackPanel>
+                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                    <StackPanel
+                        MinWidth="148"
+                        HorizontalAlignment="Left"
+                        KeyboardNavigation.IsTabStop="False"
+                        Orientation="Horizontal">
+
+                        <xctk:WatermarkTextBox
+                            KeyboardNavigation.TabIndex="100"
+                            Text="{Binding LastName}"
+                            Watermark="Фамилия">
+
+
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="LostFocus">
+                                    <catel:EventToCommand Command="{Binding MakeFullNameCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="GotFocus" />
+
+                            </i:Interaction.Triggers>
+                            <i:Interaction.Behaviors>
+                                <behavior:TabOnEnterOrTabBehavior />
+                            </i:Interaction.Behaviors>
+                        </xctk:WatermarkTextBox>
+
+                        <xctk:WatermarkTextBox
+                            KeyboardNavigation.TabIndex="101"
+                            Text="{Binding FirstName}"
+                            Watermark="Имя">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="LostFocus">
+                                    <catel:EventToCommand Command="{Binding MakeFullNameCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <i:Interaction.Behaviors>
+                                <behavior:TabOnEnterOrTabBehavior />
+                            </i:Interaction.Behaviors>
+                        </xctk:WatermarkTextBox>
+
+                        <xctk:WatermarkTextBox
+                            KeyboardNavigation.TabIndex="102"
+                            Text="{Binding MiddleName}"
+                            Watermark="Отчество">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="LostFocus">
+                                    <catel:EventToCommand Command="{Binding MakeFullNameCommand}" />
+                                </i:EventTrigger>
+
+                            </i:Interaction.Triggers>
+                            <i:Interaction.Behaviors>
+                                <behavior:TabOnEnterOrTabBehavior />
+                            </i:Interaction.Behaviors>
+
+                        </xctk:WatermarkTextBox>
+
+
+
+
+                    </StackPanel>
+                    <Separator Margin="5,0,5,0" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+                    <userControls:MaskedWatermarkedTextBoxWithLabelDate
+                        KeyboardTabIndex="103"
+                        LabelText="Дата рождения"
+                        Value="{Binding DateOfBirth}" />
+
+
+
+
+                    <Separator Margin="5,0,5,0" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                    <ContentControl
+                        Content="{Binding PlaceOfBirthViewModel, Converter={StaticResource ViewModelToViewConverter}}"
+                        KeyboardNavigation.IsTabStop="False"
+                        KeyboardNavigation.TabIndex="219" />
+                    <Separator Margin="5,0,5,0" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                    <userControls:MaskedWatermarkedTextBoxWithLabelString
+                        KeyboardTabIndex="220"
+                        LabelText="ИНН"
+                        Mask="000000000000"
+                        Value="{Binding INN}" />
+                    <Separator Margin="5,0,5,0" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                    <ContentControl
+                        Content="{Binding CitizenshipViewModel, Converter={StaticResource ViewModelToViewConverter}}"
+                        KeyboardNavigation.IsTabStop="False"
+                        KeyboardNavigation.TabIndex="299" />
+                </StackPanel>
+
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+                <ContentControl Content="{Binding CardIDViewModel, Converter={StaticResource ViewModelToViewConverter}}" />
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+            </StackPanel>
+        </Expander>
+
+
+        <ContentControl Content="{Binding AddressRegistrationViewModel, Converter={StaticResource ViewModelToViewConverter}}" KeyboardNavigation.IsTabStop="False" />
+
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+
+        <CheckBox
+            Name="MailingAddressEqualRegistrationAddressFlag"
+            Margin="0,8,0,6"
+            Content="Почтовый адрес совпадает с адресом места регистрации"
+            IsChecked="{Binding MailingAddressEqualRegistrationAddressFlag}"
+            KeyboardNavigation.TabIndex="600">
+            <i:Interaction.Behaviors>
+                <catel:Focus
+                    FocusMoment="PropertyChanged"
+                    PropertyName="GetFocusOnMailingAddressEqualRegistrationAddressServiceProperty"
+                    Source="{Binding}" />
+            </i:Interaction.Behaviors>
+        </CheckBox>
+
+        <ContentControl
+            Content="{Binding MailingAddressViewModel, Converter={StaticResource ViewModelToViewConverter}}"
+            KeyboardNavigation.IsTabStop="False"
+            Visibility="{Binding ElementName=MailingAddressEqualRegistrationAddressFlag, Path=IsChecked, Converter={converters:CheckBoxCheckedToVisibilityCollapse}}" />
+
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+        <GroupBox Header="Сведения о реквизитах для выплаты доходов">
+            <StackPanel Orientation="Vertical">
+                <RadioButton
+                    Content="Почтовый перевод (по адресу фактического места жительства)"
+                    IsChecked="{Binding DividentsPaymentWay, Converter={converters:DividentsPaymentWayToIsSelectedConverter}, ConverterParameter={x:Static unitsEntity:DividentsPaymentWays.ByMail}}"
+                    KeyboardNavigation.TabIndex="800">
+                    <i:Interaction.Behaviors>
+                        <catel:Focus
+                            FocusMoment="PropertyChanged"
+                            PropertyName="GetFocusOnDividentsPaymentWayByMailServiceProperty"
+                            Source="{Binding}" />
+                    </i:Interaction.Behaviors>
+                </RadioButton>
+                <RadioButton
+                    x:Name="DividentsPaymentWaysByBankRadioButton"
+                    Content="Банковским переводом"
+                    IsChecked="{Binding DividentsPaymentWay, Converter={converters:DividentsPaymentWayToIsSelectedConverter}, ConverterParameter={x:Static unitsEntity:DividentsPaymentWays.ByBank}}"
+                    KeyboardNavigation.TabIndex="801" />
+            </StackPanel>
+        </GroupBox>
+        <Expander
+            Header="Банковские реквизиты"
+            IsExpanded="True"
+            KeyboardNavigation.IsTabStop="False"
+            Visibility="{Binding ElementName=DividentsPaymentWaysByBankRadioButton, Path=IsChecked, Converter={converters:CheckBoxCheckedToVisibilityVisible}}">
+
+            <ContentControl Content="{Binding BankDetailsViewModel, Converter={StaticResource ViewModelToViewConverter}}" KeyboardNavigation.IsTabStop="False" />
+
+        </Expander>
+
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+        <CheckBox
+            Name="OnlyPersonalPresenceFlag"
+            Margin="0,8,0,6"
+            Content="Документы для проведения операций могут представляться почтовым отправлением"
+            IsChecked="{Binding OnlyPersonalPresenceFlag}"
+            KeyboardNavigation.TabIndex="1000" />
+
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+        <StackPanel Orientation="Horizontal">
+            <ContentControl Content="{Binding PhoneNumbersViewModel, Converter={StaticResource ViewModelToViewConverter}}" KeyboardNavigation.IsTabStop="False" />
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            <ContentControl Content="{Binding EmailsViewModel, Converter={StaticResource ViewModelToViewConverter}}" KeyboardNavigation.IsTabStop="False" />
+        </StackPanel>
+
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+        <Expander
+            MaxWidth="760"
+            HorizontalAlignment="Left"
+            Header="Сведения, предоставляемые в рамках 115-ФЗ о ПОД/ФТ"
+            IsExpanded="False"
+            KeyboardNavigation.IsTabStop="False">
+            <StackPanel>
+                <CheckBox
+                    Name="IsOneOfPODFTFlag"
+                    Content="Относится к категории лиц, указанных в подпунктах 1, 5 пункта 1 статьи 7.3 115-ФЗ о ПОД/ФТ"
+                    IsChecked="{Binding IsOneOfPODFTFlag}"
+                    KeyboardNavigation.TabIndex="1100" />
+                <CheckBox
+                    Name="GotBeneficialOwnerFlag"
+                    Content="Имеет бенефициарного владельца и/или выгодоприобретателя"
+                    IsChecked="{Binding GotBeneficialOwnerFlag}"
+                    KeyboardNavigation.TabIndex="1101" />
+                <CheckBox
+                    Name="IsHeadNonComercialCompanyFlag"
+                    IsChecked="{Binding IsHeadNonComercialCompanyFlag}"
+                    KeyboardNavigation.TabIndex="1102">
+                    <TextBlock TextWrapping="Wrap">Является руководителем или учредителем некоммерческой организации, иностранной некоммерческой неправительственной организации, её отделения, филиала, или представительства, осуществляющих свою деятельность на территории РФ</TextBlock>
+
+                </CheckBox>
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+            </StackPanel>
+
+        </Expander>
+
+
+    </StackPanel>
+
+</catel:DataWindow>
