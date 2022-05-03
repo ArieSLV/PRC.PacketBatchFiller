@@ -973,7 +973,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Extensions\EmptyTextFile.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
